@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+	<html class="sl-root base export loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Symfony2: Slides</title>
+		<meta name="description" content="Slides">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-silver-green">
+		<div class="reveal">
+			<div class="slides">
+				<section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 302px; height: auto;" data-block-id="da9c2243b3f28303cda20fd1cc425add"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<h1><span style="font-size:32px">A journey from <strong>Request</strong> to <strong>Response</strong></span></h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="979e879d20d4f71d3e60bffff30a79c0" style="min-width: 30px; min-height: 30px; width: 600px; height: 206.309148264984px; left: 180px; top: 94px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="951" data-natural-height="327" data-src="symfony2/1298922-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 435.555555555556px; height: 245px; left: 262px; top: 426px;" data-block-id="f69c098b4a1571c07675a43040d1983e"><div class="sl-block-content" style="z-index: 13; border-style: solid; border-width: 2px;"><img data-natural-width="1600" data-natural-height="900" data-src="symfony2/1300696-Bilbon.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0555c7876692b429bdafcbd687c59257" style="height: auto; min-width: 30px; min-height: 30px; width: 169px; left: 780px; top: 8px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; text-align: left;">
+<p><span style="font-size:0.7em">02 / 2015</span></p>
+
+<p><span style="font-size:0.7em"><span style="color:rgb(17, 17, 17)">Michaël Garrez</span></span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 602px; left: 334px; top: 126px; height: auto;" data-block-id="10010627103caffdf3d316ce329f2ccf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;" dir="ui">
+<blockquote>
+<h2 style="text-align:center"><span style="font-size:24px">Why ? Isn't a framework supposed to prevent worrying about how it works ?</span></h2>
+</blockquote>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 435px; height: auto;" data-block-id="3a1058bf708b39ded94ac2b553def777"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin urna odio, aliquam vulputate faucibus id, elementum lobortis felis. Mauris urna dolor, placerat ac sagittis quis." style="text-align: left; z-index: 12;">
+<ul>
+	<li><span style="font-size:24px">Resolving edge cases</span></li>
+	<li><span style="font-size:24px">Debugging made easily</span></li>
+	<li><span style="font-size:24px">Improving general culture</span></li>
+	<li><span style="font-size:24px">Learning about low level infrastructure of modern frameworks</span></li>
+	<li><span style="font-size:24px">Avoiding blackbox situation</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="83e7ce0b63d45dc70655b6daa96c2ff1" style="height: auto; min-width: 30px; min-height: 30px; width: 359px; left: 35px; top: 13px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="10eb3339e2841021bb1574b5800cf318" style="min-width: 30px; min-height: 30px; width: 44px; height: 52.98756660746px; left: 13px; top: 13px;"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="53b663e8c013f060726a479fd00a2850" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 325px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:48px">Yes ... but it helps :</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 307px; height: 211.0625px; left: 13px; top: 108px;" data-block-id="34f0281ac55891a9030a058636235c5d"><div class="sl-block-content" style="z-index: 16; border-style: solid; border-width: 2px; border-radius: 11px;"><img data-natural-width="480" data-natural-height="330" data-src="symfony2/1302237-m_239059_T19KXo57hxmQ.jpg"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 105px; height: auto;" data-block-id="8ec370936cf61081e6f6d9574a1effc6"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony Flow</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="f3ff4a63df7ce13b9249f2cdc7a62c8e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="183c3839596299686731edc9dd332078"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 910.909090909091px; height: 360px; left: 14px; top: 254px;" data-block-id="1a2e712009c9c9ceeac547ec3c52377a"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="835" data-natural-height="330" data-src="symfony2/1299068-request-flow.png"></div></div></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="e9d4cfd27e8cd3d9e234153ac586e37c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align: center;"><strong>HTTP Principle</strong></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="880d65defb71bd2ecb1833926103379a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="8b69a352bdaa10ff0410a9b404bb217d"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0bbaaf63183327528e1bf15a0527fd7a" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 79px; top: 249px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>HTTP protocol implies necessarily a Request and a Response.</p>
+
+<p> </p>
+
+<p>How could a Web Framework be based on another principle ? </p>
+
+<p> </p>
+
+<p> </p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="3e3605387c1db14380c28922817a8a64"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align: center;"><strong>HTTP Principle</strong></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="7e186c401eea6bf494653e7af9247618"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="1a34ef8a92f9557170e8adab8af12c9c"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="72e96fbc5362539c5a1b3847cc62bb43" style="min-width: 30px; min-height: 30px; width: 590.722222222222px; height: 245px; left: 185px; top: 271px;"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 3px; border-radius: 15px;"><img data-natural-width="651" data-natural-height="270" data-src="symfony2/1299004-pasted-from-clipboard.png"></div></div></section></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="ba600a710116f7d362e6c82d2b7d311e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center"><strong>PHP Principle</strong></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="390f238ae1d487837671d9424d32bc67"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="c646ea47bf4406ad3c62b4bd1f6628d7"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="3c6bd8f2fa80ebe9d95767a4ad2ca794" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h3 style="text-align:left">Request</h3>
+
+<p style="text-align:left">PHP gives us "helpers" to access HTTP Request data : Superglobals <span style="font-size:20px">($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER)</span>.</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 407px;" data-block-id="38757b35422e875b6e98907824b88d88"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3 style="text-align:left">Response</h3>
+
+<p style="text-align:left">PHP methods like echo(), print(), cookies() and headers() gives you an easy way to output a HTTP Response.</p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="a8977341ddc47cb42ea90c4d34ca0a4a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center"><strong>Symfony Principle</strong></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="9f227416cc8fe76b27766e56945db12b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="19c1ce0cc35ecee837971ac3eeeb459c"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 269px;" data-block-id="d3e0c84a7d45150b46df68f60d6fc5ec"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h3 style="text-align: left;">HttpFoundation Symfony Component</h3>
+
+<p style="text-align: left;"> </p>
+
+<p style="text-align: left;">One of Symfony's 31 components.</p>
+
+<p style="text-align: left;">HttpFoundation provides an object oriented layer for a bunch of HTTP specifications.</p>
+
+<p style="text-align:left"> </p>
+</div></div></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="adff12828510e29a056bd98f8be01b73"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align: center;">HttpFoundation </h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="098ab6743bdc6e374ef3a6ebbe3691e9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="64f8e71d7a5aacc3fec756800da0e256"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="33a629660ad4c807e1832fca3481d0d5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Request</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="66040421fa180d0b0f6e61db576ed5da" style="min-width: 30px; min-height: 30px; width: 705px; height: 368px; left: 126px; top: 319px;"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+use Symfony\Component\HttpFoundation\Request;
+
+$request = Request::createFromGlobals();
+
+
+// OR
+
+$request = new Request(
+    $_GET,
+    $_POST,
+    array(),
+    $_COOKIE,
+    $_FILES,
+    $_SERVER
+);</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="ced0d4fdabe892f58a7d166d8e90233e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align: center;">HttpFoundation </h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="91d9286330e978617d3aa5958ab51786"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="6ad6a78207c8391fbd1550cc5d366b52"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="053daa5e600cfb0e77e945f942e5a040"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Request</h3>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="650e10679da8be547d206fd773d84ffe" style="min-width: 4px; min-height: 4px; width: 141px; height: 71px; left: 9px; top: 329px;"><div class="sl-block-content" data-shape-type="symbol-x-circle" data-shape-fill-color="rgb(204, 0, 0)" data-shape-stretch="false" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(204, 0, 0)"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM23.914 21.086l-2.828 2.828-5.086-5.086-5.086 5.086-2.828-2.828 5.086-5.086-5.086-5.086 2.828-2.828 5.086 5.086 5.086-5.086 2.828 2.828-5.086 5.086 5.086 5.086z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="320725d33e822859e5aac079689327a1" style="height: auto; min-width: 30px; min-height: 30px; width: 763px; left: 160px; top: 325px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>HttpFoundation will not sanitize your HTTP Request data, it only provides an object layer to access it</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 298.360655737705px; height: 273px; left: 331px; top: 420px;" data-block-id="05d079125652309146b037dd0c7f73f4"><div class="sl-block-content" style="z-index: 17; border-style: solid; border-width: 2px;"><img data-natural-width="600" data-natural-height="549" data-src="symfony2/1302235-brace_yourself_sql__1_.jpg"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="5b210e1ba45b7c691915fd90d49a7c9e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align: center;">HttpFoundation </h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="1524670b897914cce992d6f33f99e8b6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="a991aeee506cd8622b61b27c77a780ac"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="8e659f33700b9b5fad59a9180afa044c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Response</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 712px; height: 212px; left: 119px; top: 319px;" data-block-id="8927ee21b1b4244b18b423abee3bb8f9"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+use Symfony\Component\HttpFoundation\Response;
+
+$response = new Response(
+    'Content',
+    Response::HTTP_OK,
+    array('content-type' =&gt; 'text/html')
+);</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="9e5fd3edf2467e28fea7496e2639d066"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align: center;">HttpFoundation </h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="6051b4992063db4bfeeca37b726d3984"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="db45e0c982ef38c0b7bb1719deb84d02"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="6522aeb200936add04d10e456e7274b0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Session</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="f5f7bd69d8e393766de2f788473e61e5" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>Provides an object layer to start or stop a session and access its data</p>
+
+<p> </p>
+
+<p> </p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="035c1d961b76523e8dd063245bc72b5c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align: center;">HttpFoundation </h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="57bf31b20a5b1dd92a3a044d79662cba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="cca7f8938987c5cb6ce8f29c3704ece0"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="74da149988f562beabdaa93faed3f852"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Symfony Flow</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 872.954545454546px; height: 345px; left: 42px; top: 299px;" data-block-id="8c6eb29f5a3e4c9179f9b0b65ea51ff6"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="835" data-natural-height="330" data-src="symfony2/1299084-requestresponse.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="a2c066a3588d7d9dcb8d27607eb69acb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align: center;">HttpFoundation </h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="dbe5c1472500aeb5e25276d47476f357"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="b2728b72b0ebed697b90f9bf236d403c"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="6443be50b4bc26a78f74ad16ceeaa39c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Who uses it ?</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="01f4f74c38edbb4e966cba9314748550" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<ul>
+	<li style="text-align:left">Drupal 8 (what we've been told ...)</li>
+	<li style="text-align:left">Laravel</li>
+	<li style="text-align:left">eZ Publish</li>
+	<li style="text-align:left">Silex</li>
+	<li style="text-align:left">Shopware</li>
+	<li style="text-align:left">...</li>
+</ul>
+</div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="0efbca028ff7ae4b66a60ba1a9686528"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Front Controller</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="110a1e52627d5a913777f7ae30f3a877"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="49e8672ffe6b358174b51aedb5ab5268"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="3e0f744ee6b8a4add52c82fc8935d309"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p style="text-align:left">Symfony uses MVC architectural pattern.</p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left">Every single Request will be handle by the Front Controller to be dispatched to the Application</p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="a0c2d29080848ee705b5176cb7f2296a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Front Controller</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="99c1a2928b585eb757a5ac2a63fffe61"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="b409e0d5d2c510eee56753d7e946e3c5"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2c9f46c6399ea61df78eb9c819241465" style="height: auto; min-width: 30px; min-height: 30px; width: 873px; left: 42px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui"><p>With the HttpFoundation Component you can actually build a correct Front Controller</p></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="ebc2cc3f2228341d6d956cc9958171d7" style="min-width: 30px; min-height: 30px; width: 827px; height: 378px; left: 65px; top: 312px;"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+$request = Request::createFromGlobals();
+$path = $request-&gt;getPathInfo(); // Le chemin de l'URI demandée
+
+if (in_array($path, array('', '/'))) {
+    $response = new Response('Bienvenue sur le site.');
+} elseif ($path == '/contact') {
+    $response = new Response('Contactez nous');
+} else {
+    $response = new Response('Page non trouvée.', 404);
+}
+
+$response-&gt;send();</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="67717d378159f2908965c833f3a3f6f3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Front Controller</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="5a7566fe36a488d4eba071fb1b5ea97a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="aa0bbe0217fe7e19ae7e1ebf0936fc1b"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 873px; left: 42px; top: 210px;" data-block-id="29ff2e16b5ab07e82cd62432bd23a26c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<p>Symfony Front Controllers (Depending on your environment)</p>
+
+<p>uses a Kernel to handle things such as routing</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 827px; height: 378px; left: 65px; top: 312px;" data-block-id="194bb4b588a27ab8b5c80b3c2cad18b9"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+$request = Request::createFromGlobals();
+$path = $request-&gt;getPathInfo(); // Le chemin de l'URI demandée
+
+if (in_array($path, array('', '/'))) {
+    $response = new Response('Bienvenue sur le site.');
+} elseif ($path == '/contact') {
+    $response = new Response('Contactez nous');
+} else {
+    $response = new Response('Page non trouvée.', 404);
+}
+
+$response-&gt;send();</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="763dcf1d7005896d43d9cdf3003607c8" style="min-width: 4px; min-height: 4px; width: 827px; height: 158px; left: 65px; top: 472px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="true" style="z-index: 16; opacity: 0.33;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 827 158"><rect width="827" height="158" class="shape-element" fill="rgb(255, 0, 0)"></rect></svg></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="59a54505bbeec0dbc9615b9d5b5f5699"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Front Controller</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="87dbf385ac9adea609f3747f1744efcb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="45e84b2182d0315910872fdeb409f21a"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 424px; left: 28px; top: 261px;" data-block-id="1adbacd872ef93ca70e8a6fb7d0ebfbb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui"><p>Our Front Controller</p></div></div>
+<div class="sl-block" data-block-type="code" style="width: 478.5px; height: 318px; left: 0px; top: 312px;" data-block-id="6c6d4af04c37aa9cbc39d59e7a7a9a29"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px; font-size: 73%;"><pre><code>&lt;?php
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+$request = Request::createFromGlobals();
+$path = $request-&gt;getPathInfo(); // Le chemin de l'URI demandée
+
+if (in_array($path, array('', '/'))) {
+    $response = new Response('Bienvenue sur le site.');
+} elseif ($path == '/contact') {
+    $response = new Response('Contactez nous');
+} else {
+    $response = new Response('Page non trouvée.', 404);
+}
+
+$response-&gt;send();</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 440px; height: 100px; left: 20px; top: 420px;" data-block-id="a548dc4b06b5203f4ce8adbcfbc850e3"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 0, 0)" data-shape-stretch="true" style="z-index: 16; opacity: 0.33;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 440 100"><rect width="440" height="100" class="shape-element" fill="rgb(255, 0, 0)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="1543f490ab47e597369fc8a7a74b7998" style="min-width: 30px; min-height: 30px; width: 480px; height: 318px; left: 480px; top: 312px;"><div class="sl-block-content" style="z-index: 17; font-size: 73%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+use Symfony\Component\HttpFoundation\Request;
+
+require_once __DIR__.'/../app/AppKernel.php';
+
+$kernel = new AppKernel('prod', false);
+$kernel-&gt;loadClassCache();
+
+$request = Request::createFromGlobals();
+$response = $kernel-&gt;handle($request);
+$response-&gt;send();
+$kernel-&gt;terminate($request, $response);
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 424px; left: 503px; top: 261px;" data-block-id="31dd32a3291cbbe3e3ef95297db96023"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" dir="ui">
+<p>Symfony app.php</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2017cc48402430807e971daf09d48fd6" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 0px; top: 643px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;">
+<p><span style="font-size:16px"><strong>NB</strong> : boostrap.php.cache call has been removed from app.php for lisibility</span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="54aa805562451817afb9815e1ddf5029"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Front Controller</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="21d39f2a3cc866b3bdbdd9e2dfff5959"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="c9b9bd4d9aa09ed95382ceabfcbcde85"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="86634b4f8d5544c741e6f01f8861364b" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p>Text</p></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 870.424242424242px; height: 344px; left: 44px; top: 318px;" data-block-id="8cc4d2f104292944d862fc80f94e4a6a"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="835" data-natural-height="330" data-src="symfony2/1299161-frontcontroller.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="bc4115ee7f7992c6f378585213aa610f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<h3 style="text-align:left">Symfony Flow</h3>
+</div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="b286a469a8c1fdb2be0c70dd5a840b6a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony AppKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="1d4dccbe40752d53b1b057a5ccf1a61f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="c8becb9e112ed5b4bd7c9a6aaec45324"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="8b2f996ce1b187194d170fb673f58249" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 179px; top: 247px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>Globally the     of Symfony :</h3>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="d9f7ae3ed4c072ba54bd9c3ac9eddb85" style="min-width: 4px; min-height: 4px; width: 36px; height: 41px; left: 455px; top: 252px;"><div class="sl-block-content" data-shape-type="symbol-heart-fill" data-shape-fill-color="#000000" data-shape-stretch="false" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 2 32 28"><g class="shape-element" fill="#000000"><path d="M16 5.844c-1.613-2.266-4.129-3.844-7.113-3.844-4.903 0-8.887 3.992-8.887 8.891v0.734l16.008 18.375 15.992-18.375v-0.734c0-4.899-3.984-8.891-8.887-8.891-2.984 0-5.5 1.578-7.113 3.844z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="55c21f343702fb35f4fb7176fb840d47" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 161px; top: 323px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<ul>
+	<li>Registers bundles</li>
+	<li>Boots bundles</li>
+	<li>Initializes container</li>
+	<li>Warms up cache</li>
+	<li>Calls the HttpKernel</li>
+</ul>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="31a68fba4ec02c49db417437bcc6212a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony AppKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="841e1a7757e56a18f3646d4d1e7ced3d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="1283302a738520dd65793d4ed88a1cd8"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="d91857e81444f868fcb975849153b110"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>FrontController</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="a65fff881047c201aea5737c3fac2d0f" style="min-width: 30px; min-height: 30px; width: 909px; height: 245px; left: 22px; top: 315px;"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px; border-radius: 10px;"><pre><code>&lt;php
+
+// Instantiates a new AppKernel in "prod" environment with no debug
+
+$kernel = new AppKernel('prod', false);
+
+// Will just define you want cache and it's suffix and extension (not a big deal :) !)
+
+$kernel-&gt;loadClassCache();
+</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="cf9535fbd796103f50a5b207073a827f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony AppKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="c6609b445b059f929a21caafff1863c0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="c04b51747a498154b89ece8700e1b71f"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="94b33e1d437f2bff91720f8d177a672f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>FrontController</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 909px; height: 187px; left: 22px; top: 315px;" data-block-id="68fd05c9dac9b6f7bea5b9ab0f4c64d8"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px; border-radius: 10px;"><pre><code>&lt;?php
+
+// Trivial HttpFoundation utilisation , isn't it ?
+$request = Request::createFromGlobals();
+
+// Real business is coming
+$response = $kernel-&gt;handle($request);
+</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="26090461f68711b42ab3edd21ea37b3a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony AppKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="408e19bdb04d3d9a8c4439bac4a67a6d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="fe1f8cda24552926f54e7f3e639a76ed"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="ba59652744bfe7a0f83938a3e13f3c47"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>handle($request)</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="67d8ac3a0d726456a0551f690d3811e4" style="height: auto; min-width: 30px; min-height: 30px; width: 806px; left: 80px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" dir="ui">
+<ul>
+	<li>Boots your project</li>
+	<li>Passes the Request to the HttpKernel</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="1cd6129f08ae45bd2faa4a21388c34a2" style="min-width: 30px; min-height: 30px; width: 941px; height: 207px; left: 10px; top: 447px;"><div class="sl-block-content" style="z-index: 16; font-size: 88%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
+    {
+        if (false === $this-&gt;booted) {
+            $this-&gt;boot();
+        }
+
+        return $this-&gt;getHttpKernel()-&gt;handle($request, $type, $catch);
+    }</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="3e6989acaf559ad61a3d914538a0cd40"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony AppKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="7ba6c936e46b9e38dd2db1c043be49fc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="ae1376101f62d2c94c1ee1b327ecaf6d"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="454b0c5a0ff303ce0f3e2c3f24d1dff2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>boot()</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 806px; left: 80px; top: 312px;" data-block-id="61e65f36f0fbc6357b4d43f66db940d8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" dir="ui">
+<ul>
+	<li><span style="font-size:20px"><strong>Loads cache files</strong> mapped in classes.map (cache/ENV)</span></li>
+	<li><span style="font-size:20px"><strong>Initializes bundles</strong> (basically creating an inheritance mapping)</span></li>
+	<li>
+<span style="font-size:20px"><strong>Initializes a new Container</strong> (part of DependencyInjection Component) :</span>
+	<ul>
+		<li><span style="font-size:20px">From cache if is fresh</span></li>
+		<li><span style="font-size:20px">Will inject itself (AppKernel) as 'kernel' into the Container</span></li>
+		<li><span style="font-size:20px; line-height:26px">The Container will register all parameters, services, ...</span></li>
+	</ul>
+	</li>
+	<li><span style="font-size:20px"><strong>Boots</strong> every <strong>bundle</strong> (basically does nothing !)</span></li>
+</ul>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 763px; left: 97px; top: 105px; height: auto;" data-block-id="a2bd7c4a815d47b477acf01e5150a9e1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Symfony AppKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="1729124b702e553eb6ea9eeab24b61df"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="7f552a7f7173c7558384a8b65170f0e2"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 845.121212121212px; height: 334px; left: 56px; top: 305px;" data-block-id="47f622ffd64097a1e79e873be7e8690e"><div class="sl-block-content" style="z-index: 13; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="835" data-natural-height="330" data-src="symfony2/1299242-appkernel.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="81341f8a9634f0a95222d1cae7a3ea95"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3 style="text-align:left">Symfony Flow</h3>
+</div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="e4156ead0b34cbf45a2e98853793d32d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="cf07d57c2cd5d4886c986aa2f5918c0d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="7cd01268218763908fccc8382fd17347"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 806px; left: 77px; top: 254px;" data-block-id="b869e5d371f1c90e20616fa340998feb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<ul>
+	<li>Implements same HttpKernelInterface as AppKernel</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 941px; height: 207px; left: 10px; top: 323px;" data-block-id="2216262dbc7f8df1de3557f17387c7b6"><div class="sl-block-content" style="z-index: 15; font-size: 88%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
+    {
+        if (false === $this-&gt;booted) {
+            $this-&gt;boot();
+        }
+
+        return $this-&gt;getHttpKernel()-&gt;handle($request, $type, $catch);
+    }</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="4c83e7866ff61b569e4e37b6489d3d90" style="min-width: 4px; min-height: 4px; width: 560px; height: 42px; left: 80px; top: 458px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(147, 196, 125)" data-shape-stretch="true" style="z-index: 16; opacity: 0.32;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 560 42"><rect width="560" height="42" class="shape-element" fill="rgb(147, 196, 125)"></rect></svg></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="a9b6b034908648fafae1f5a8f9203bf5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="bf25d950c4e66490a90e0e879e1a3337"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="ffbb7faebb99cd4398bb9d2b4f6ed986"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="1ba269dbe51512786d03b7319e380fc7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3>handle($request)</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2484f894464eb5da3d784cf380ad55a3" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>Will convert our Request to a Response</p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="926ca88e13d178e6091f6794c77cd64e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="c4554188b15ec89f295bd3057cf0bc64"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="f02d22ec8fae73e619a1641318d85bb3"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="3677cfff6e19aa18e35f9ed0bbe73608"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3>handle($request)</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 331px;" data-block-id="52cf2b66b2a0cd5dba1abc8db5a8fc75"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<ul>
+	<li style="text-align:left">Will call handleRaw($request)</li>
+</ul>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="392740477182d5813a36646711875e53"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="0ae239a9ed1b14f55e74b6a41148528a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="c7a6fa1928b98fb6b6d1db365d1e83ac"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="5f6aac84212cae39e7e22d956a4f3e6b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h3>handleRaw($request)</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="9652d10b7f7e0a919e02a697d8d6a346" style="min-width: 30px; min-height: 30px; width: 929px; height: 339px; left: 19px; top: 315px;"><div class="sl-block-content" style="z-index: 14; font-size: 85%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    private function handleRaw(Request $request, $type = self::MASTER_REQUEST)
+    {
+        $this-&gt;requestStack-&gt;push($request);
+
+        // request
+        $event = new GetResponseEvent($this, $request, $type);
+        $this-&gt;dispatcher-&gt;dispatch(KernelEvents::REQUEST, $event);
+
+        if ($event-&gt;hasResponse()) {
+            return $this-&gt;filterResponse($event-&gt;getResponse(), $request, $type);
+        }
+
+        // load controller
+        if (false === $controller = $this-&gt;resolver-&gt;getController($request)) {
+            throw new NotFoundHttpException('Unable to find the controller for path');
+        }
+
+    // ...</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 24px; height: 18.5px; left: 604px; top: 447px;" data-block-id="02a6e2863181eff4f6f7b74c07bf317d"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(241, 194, 50)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(241, 194, 50)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 148px; left: 615px; top: 433px;" data-block-id="6f01201d03bc51c04bcafa7133a8606b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(241, 194, 50);">
+<p><strong><span style="font-size:16px">kernel.request</span></strong></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="a4a1cc90b05a8a9a2d5703fde41df570"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="3d3d1d7ee540ae5883ebde06c8796268"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="c8a162b831fdf906785e488d6b362a06"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="dd73cbb9a194606f59b6718877c8d541"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>ControllerResolver</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="fa9456af41980a6620c7772795fa3b21" style="height: auto; min-width: 30px; min-height: 30px; width: 907px; left: 26px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:24px">The ControllerResolver will basically convert a :</span></p>
+
+<p><span style="font-size:20px"><em>DJUserBundle:Profile:show</em></span></p>
+
+<p><span style="font-size:24px">To :</span></p>
+
+<p><span style="font-size:20px"><em>DJ\UserBundle\Controller\ProfileController::showAction</em></span></p>
+
+<p><span style="font-size:24px"><span>Based on the $request-&gt;attributes-&gt;get('_controller') value</span></span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="b2f5b168d1121b9bd1f38aa4fb8d39c3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="7cbf4544ca692e7f7d865e6b29196c0b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="89f44611251e6be2189d24dab695e650"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 465px; left: 8px; top: 393px;" data-block-id="33274c9c85c59a6cb63bc8696b6613af"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<p>But how can the ControllerResolver access the attributes property of $request which is empty isn't it ?</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 262px;" data-block-id="e765ff719bfec9f493521e5933fcb944"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3>ControllerResolver</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 314px; height: 225.260869565217px; left: 563px; top: 378px;" data-block-id="5a9a8b4e5580976b94e7f90b12427420"><div class="sl-block-content" style="z-index: 16; border-style: solid; border-width: 2px; border-radius: 10px;"><img style="" data-natural-width="230" data-natural-height="165" data-src="symfony2/1302266-LOhkhoB.gif"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="470abee638180ba28054d2ee8759ffc1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="4a4dc537fff39dca59c339fc8abd1e49"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="ed3637899df38b42435f9960772a40c5"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 876px; left: 57px; top: 331px;" data-block-id="7a8da46e2dcfb35fb3a3e59256704e01"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" dir="ui">
+<p>Yes remember :</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 262px;" data-block-id="c8c27973d6d467e6ff01b6bb4b36107a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>ControllerResolver</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 705px; height: 216px; left: 128px; top: 420px;" data-block-id="f137e4c99b6ffe0ff8c18e8c5bb2098d"><div class="sl-block-content" style="z-index: 16; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+$request = new Request(
+    $_GET,
+    $_POST,
+    array(),
+    $_COOKIE,
+    $_FILES,
+    $_SERVER
+);</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="ea7fd50dd405ccff0182b1d32d1fce0c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="0e2088af7ff1eaff6a0ab0ac61968955"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="341e036d289625e5afe49ac2b08cb491"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 876px; left: 57px; top: 328px;" data-block-id="08a6a1661c8c8a7df8af6d343c60978b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<p><span style="font-size:24px">Well, the <strong>Routing</strong> in Symfony is <strong>handled</strong> by a <strong>listener</strong> (RouterListener) on the <em>kernel.request</em> event dispatched before.</span></p>
+
+<p> </p>
+
+<p><span style="font-size:24px">The RouterListener is a part of the Routing Component of Symfony</span></p>
+
+<p> </p>
+
+<p><span style="font-size:24px">Before the RouterListener other listeners are triggered like SessionListener (part of Session Component), FragmentListener for sub requests</span></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 262px;" data-block-id="21a8bf6e7f9225650e65d43d1b3087c7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3>RouterListener</h3>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="3a3624512de9271a1370e2f655f98d2f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="a1d91816ec7170cdf58c604ee8b8f076"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="00767026daaf23706240e12abde0a857"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 876px; left: 57px; top: 324px;" data-block-id="819069a53420610a4ea3396c7581a6b7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<p><span style="font-size:24px">The <strong>purpose</strong> of a MatcherInterface is to <strong>convert an URI</strong> (path exactly) <strong>to</strong> a <strong>route</strong>. In the fact the Router implements a RequestMatcherInterface which will call an UrlMatcherInterface child.</span></p>
+
+<p> </p>
+
+<p><span style="font-size:24px"><strong>In the fact</strong> the Router will be rarely called but<strong> its cached version</strong> app<em>ENV</em>UrlMatcher <strong>will be called</strong>. This file contains whole your application routes and its match() function only checks partial matches through hundred of strpos() calls on the $request-&gt;getPathInfo().</span></p>
+
+<p> </p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 262px;" data-block-id="d47bcd0c1aec23b29052b2613fc08c76"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3>RouterListener</h3>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="a2eeabf1a93610344d65b77054540fc1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="687458234a97a089eb52d2a47f7d42a9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="76e51c25034dcefef026cc6522a5433a"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="2655ee6a8dea8d026b7d255c3247ad7f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<h3 style="text-align:left">Who uses the Routing ?</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;" data-block-id="0bbd6a0cc91d777b5579c08ba07bbce5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<ul>
+	<li style="text-align:left">Drupal 8</li>
+	<li style="text-align:left">phpBB 3.1</li>
+	<li style="text-align:left">eZ Publish</li>
+	<li style="text-align:left">Silex</li>
+	<li style="text-align:left">Shopware</li>
+	<li style="text-align:left">...</li>
+</ul>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="e1019cd67cc59567d928f496e5e4dfe0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="49dfbc576a62a30fa471af1b5575e1c0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="c0a0ac55fe20607c3c008fcc548f511b"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 240px;" data-block-id="6d6a0868efaa645cdbc7b7054e2a7463"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>RouterListener</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="28894eb37e8f29253f3b78442fc864d4" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<ul>
+	<li style="text-align:left"><span style="font-size:20px">Will listen inter alia to the <strong>kernel.request</strong></span></li>
+	<li style="text-align:left">
+<span style="font-size:20px">Will call the <strong>Router</strong> (RequestMatcher) to <strong>match</strong> the <strong>Request</strong> to an existing <strong>route</strong> based on :</span>
+	<ul>
+		<li><span style="font-size:20px">Route requirements</span></li>
+		<li><span style="font-size:20px">Route definition</span></li>
+	</ul>
+	</li>
+	<li style="text-align:left"><span style="font-size:20px">Will <strong>add</strong> the <strong>route informations</strong> to the attribute property of the <strong>request</strong> (_controller, _route, _route_params). _controller could be for example : DJProfileBundle:Profile:showAction</span></li>
+</ul>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="24acfab58b36b461c8dde0ae07e7ae54"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="7f4b6bd369b772cb4b6df4f95de92e0c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="40f8de7ac7ac1831b49e8181f4907e05"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 240px;" data-block-id="1ebd924000de7ad113425d781d95e038"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>RouterListener</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 845px; height: 379px; left: 61px; top: 312px;" data-block-id="9accbee18a086261eef8d7b63b2e3ea1"><div class="sl-block-content" style="z-index: 15; font-size: 85%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    public function onKernelRequest(GetResponseEvent $event)
+    {
+        $request = $event-&gt;getRequest();
+
+        // add attributes based on the request (routing)
+        try {
+            $parameters = $this-&gt;matcher-&gt;matchRequest($request);
+
+            $request-&gt;attributes-&gt;add($parameters);
+
+            unset($parameters['_route'], $parameters['_controller']);
+
+            $request-&gt;attributes-&gt;set('_route_params', $parameters);
+        } catch (ResourceNotFoundException $e) {
+            throw new NotFoundHttpException(...);
+        } catch (MethodNotAllowedException $e) {
+            throw new MethodNotAllowedHttpException(...);
+        }
+    }</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="ec6e990bbe4b57cca2f638c62273c97f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="53dfbbebcd2bf266f42e57cc1a74d212"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="deff52df25606a64e7b515142ca56818"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 240px;" data-block-id="d7471545668aca0608dd23bc414de86e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>RouterListener</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 331px;" data-block-id="9484800b4e3301cbd01d6cd20e165c05"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>After the RouterListener, other Listeners will be called for the same event as the Firewall</p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="79bec9c31604bf76724899aa47756e64"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="dee57a96bfe14ac9eea53220ae8da230"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="dcd56d1aee9bf854fb567850d2abccf2"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="0151bd899fb999903276f6d2398d3966"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Symfony Flow</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 807px; height: 318.934131736527px; left: 80px; top: 331px;" data-block-id="cb1a9da5f676ee90b805872790c52323"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="835" data-natural-height="330" data-src="symfony2/1299920-routing.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="46932b929e11190aa679f7921a197444"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="549d82dfd56132d2554982cc65c643a3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="01cc46c8ae2df344eb8b8d05a40ec600"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 240px;" data-block-id="cc708657de3fcc94cafa4f7010afde43"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>Firewall</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="8d1faae5ecc9665e1db0a380b1aefeb1" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 302px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:20px">Symfony Firewall will not authenticate users. </span></p>
+
+<p><span style="font-size:20px">Its only goal is to prevent users to access defined restricted areas</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 306.222222222222px; height: 265px; left: 327px; top: 428px;" data-block-id="825e55a2f68795e8af5cf56a7c896b5f"><div class="sl-block-content" style="z-index: 16; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="260" data-natural-height="225" style="" data-src="symfony2/1302291-wFhjaAw.gif"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="bef12d90f4f69c20af50595eb1efb2da"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="b39ce48c2d6737de03590f973acf5de7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="ab0771d7ee435785ea3c71588ed3a32d"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 240px;" data-block-id="61d1bfaaaa38e6ce6e0d86ae41220005"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>Firewall</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 396px;" data-block-id="6e1a80caae314096b749501a6f56e073"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:20px">As said before the Firewall will listen to the kernel.request event.</span></p>
+
+<p> </p>
+
+<p><span style="font-size:20px">It will try to match a secured area to the current path and will return listeners if match is found.</span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="6c2bdb98c35a9dea53602efbc8200ff9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="8a6969633c9c5b4b25f59110ba4738d5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="8531f7212a03376eadcd2ff589c6c88a"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 240px;" data-block-id="2b86b7484d2e7d1f2ea8e56bf53e15d5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>Firewall</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 814px; height: 389px; left: 73px; top: 297px;" data-block-id="183495100e310c3d0fabf6f1bfc6a9ec"><div class="sl-block-content" style="z-index: 16; font-size: 83%; border-style: solid; border-width: 3px;"><pre><code>&lt;?php
+
+use Symfony\Component\Security\Http\FirewallMap;
+use Symfony\Component\HttpFoundation\RequestMatcher;
+use Symfony\Component\Security\Http\Firewall\ExceptionListener;
+
+$map = new FirewallMap();
+
+$requestMatcher = new RequestMatcher('^/secured-area/');
+
+// instances de Symfony\Component\Security\Http\Firewall\ListenerInterface
+$listeners = array(...);
+
+$exceptionListener = new ExceptionListener(...);
+
+$map-&gt;add($requestMatcher, $listeners, $exceptionListener);
+
+// the EventDispatcher used by the HttpKernel
+$dispatcher = ...;
+
+$firewall = new Firewall($map, $dispatcher);
+
+$dispatcher-&gt;addListener(KernelEvents::REQUEST, array($firewall, 'onKernelRequest');</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="af7441556647c301f4358eca48ec1028"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="6c55f7340be1c192d776b12f9609f287"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="1c8e1deb60212bea7e05c265befd7482"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 194px; top: 240px;" data-block-id="113289ea5cdb669fb79a3d35e2003541"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>Authentication Listeners</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0efa1415d97ef95b42b5f4e4c7a4bbb3" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:20px">Those listeners will try to Authenticate the user based on the request and will (depending on the situation) :</span></p>
+
+<p> </p>
+
+<ul>
+	<li><span style="font-size:20px">Authenticate a User</span></li>
+	<li><span style="font-size:20px">Throw an AuthenticationException (AccessDeniedHttpException)</span></li>
+	<li><span style="font-size:20px">Do nothing </span></li>
+	<li><span style="font-size:20px">Transfer to an AuthenticationEntryPointInterface (if not authenticated at all)</span></li>
+</ul>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="8fc9cf599cd5579002f9bc7283d511f2"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="f294b594285cc1b277b685169c62b969"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="1293a074a4e341ac2384cb9fa6971ad7"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="611ea4d3effda55711605f57deb14a1e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>handleRaw($request)</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 929px; height: 339px; left: 19px; top: 315px;" data-block-id="84e70de3c93a70cfc375393812c8e398"><div class="sl-block-content" style="z-index: 15; font-size: 85%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    private function handleRaw(Request $request, $type = self::MASTER_REQUEST)
+    {
+        $this-&gt;requestStack-&gt;push($request);
+
+        // request
+        $event = new GetResponseEvent($this, $request, $type);
+        $this-&gt;dispatcher-&gt;dispatch(KernelEvents::REQUEST, $event);
+
+        if ($event-&gt;hasResponse()) {
+            return $this-&gt;filterResponse($event-&gt;getResponse(), $request, $type);
+        }
+
+        // load controller
+        if (false === $controller = $this-&gt;resolver-&gt;getController($request)) {
+            throw new NotFoundHttpException('Unable to find the controller for path');
+        }
+
+    // ...</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="e97907881d62ddaea3a6a12a74fe339b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="1db72287594fac158116d7f3736e5980"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="a1447fdc61b875c1282ebfdd5d2bd531"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 179px; top: 247px;" data-block-id="2883c28655059effec74647cb32f11f9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>ResolverController</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 929px; height: 187px; left: 19px; top: 315px;" data-block-id="889abbabf08933c19894223f8797dfd3"><div class="sl-block-content" style="z-index: 15; font-size: 75%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    private function handleRaw(Request $request, $type = self::MASTER_REQUEST)
+    {  
+        // ...
+
+        // load controller
+        if (false === $controller = $this-&gt;resolver-&gt;getController($request)) {
+            throw new NotFoundHttpException('Unable to find the controller for path');
+        }
+
+        // ...</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="46b95109cbcd68e5ffaa551917e6416c" style="height: auto; min-width: 30px; min-height: 30px; width: 891px; left: 38px; top: 517px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p><span style="font-size:20px">The getController() method of the ResolverController will :</span></p>
+
+<ul>
+	<li><span style="font-size:20px">Transforms <span style="font-size:16px">DJProfileBundle:Profile:show</span> to <span style="font-size:16px">DJ\ProfileBundle\Controller\ProfileController::showAction</span></span></li>
+	<li><span style="font-size:20px"><span style="font-size:16px"><span style="font-size:20px">Will instantiate the Controller (And sets the Container if ContainerAwareInterface is implemented)</span></span></span></li>
+</ul>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="d28ab3375fdb260fad73bb7712c558f5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="0c0054f2eda2e577bf6ad12bc379ee4c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="85d7e702d6bbf62707634a7ae36647dc"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="053df50b9aa1fa8d616e5eb9ee2abed6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Symfony Flow</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 800px; height: 316.167664670659px; left: 79px; top: 309px;" data-block-id="709ac579039926ff1e63de7edc56d4e5"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="835" data-natural-height="330" data-src="symfony2/1299927-controller.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="d647f28b500c8f64362346ee1ccfb77d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="a3655f21c50c48a0f03383c9a08c0e28"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="e69233a3a0ad80ba7f4b7750ba2ddc4c"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 202px;" data-block-id="c377ea7ad4d7b1ded74e16e7390bab50"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h3>handleRaw($request)</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 928px; height: 451px; left: 20px; top: 249px;" data-block-id="5a0fcd2bdf91194416b232cb03191634"><div class="sl-block-content" style="z-index: 14; font-size: 77%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    private function handleRaw(Request $request, $type = self::MASTER_REQUEST)
+    {
+        // ...
+
+        // load controller
+        if (false === $controller = $this-&gt;resolver-&gt;getController($request)) {
+            throw new NotFoundHttpException(...);
+        }
+
+        $event = new FilterControllerEvent($this, $controller, $request, $type);
+        $this-&gt;dispatcher-&gt;dispatch(KernelEvents::CONTROLLER, $event);
+
+        $controller = $event-&gt;getController();
+
+        // controller arguments
+        $arguments = $this-&gt;resolver-&gt;getArguments($request, $controller);
+
+        // call controller
+        $response = call_user_func_array($controller, $arguments);
+
+        // Your controller might not be returning a Response right away, this will be explained
+        // in the next slide don't worry :)
+
+        return $this-&gt;filterResponse($response, $request, $type);
+    }</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="e02e70f3b5e193a5321fdc0eceba5e15"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="8f0a63dfcc35415f40aaf81bbdb7d272"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="0ac89d50658468ad63b1955b06b78fc1"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 202px;" data-block-id="73c2c48e776677c1aeb3acfca6c98fa8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>handleRaw($request)</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 928px; height: 361px; left: 16px; top: 322px;" data-block-id="75e83b22eb307bc2c6865b7ecdbb200d"><div class="sl-block-content" style="z-index: 15; font-size: 77%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    private function handleRaw(Request $request, $type = self::MASTER_REQUEST)
+    {
+        // ...
+
+        if (!$response instanceof Response) {
+            $event = new GetResponseForControllerResultEvent($this, $request, $type, $response);
+            $this-&gt;dispatcher-&gt;dispatch(KernelEvents::VIEW, $event);
+
+            if ($event-&gt;hasResponse()) {
+                $response = $event-&gt;getResponse();
+            }
+
+            if (!$response instanceof Response) {
+                $msg = sprintf('The controller must return a response (%s given).', $this-&gt;varToString($response));
+
+                throw new \LogicException($msg);
+            }
+        }
+
+        return $this-&gt;filterResponse($response, $request, $type);
+    }</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 24px; height: 18.5px; left: 541px; top: 449px;" data-block-id="5571541209c026fe31fc588fae4bd91f"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(241, 194, 50)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(241, 194, 50)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 111px; left: 561px; top: 435px;" data-block-id="d6cae72d62c5de186226e3c4d396690a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(241, 194, 50);">
+<p><strong><span style="font-size:16px">kernel.view</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2d9f2da541c138c21bb2a40a82636523" style="height: auto; min-width: 30px; min-height: 30px; width: 890px; left: 28px; top: 259px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" dir="ui">
+<p><span style="font-size:20px">Symfony implements a kernel.view event to allow developers to implement a view subsystem. </span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="b5f7d1839b83aad0b5eab23305374d4f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="425787f92ae8ff4fd73df81b30e71597"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="4882ce9109d1a297f252ea4a06b47449"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="e8e933b256841e5a16cad454115ec44b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Symfony Flow</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 837.530303030303px; height: 331px; left: 70px; top: 316px;" data-block-id="8bf83dafbfff818549162b2fa0c0f857"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="835" data-natural-height="330" data-src="symfony2/1299068-request-flow.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="2d40687c4db5cd33eeec3eef3a94a7e3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="62ab62c6c237c54d039fd53856c340dd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="53a0e9e50d315010ae29274a618a24ce"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 737px; left: 112px; top: 245px;" data-block-id="c643200c97dd7268d7c31350e105e127"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h3>filterResponse($response, $request)</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="6d999974dca0eead5e3677c1fc661e5f" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:20px">Will pop the Request from the RequestStack by calling finishRequest()</span></p>
+
+<p><span style="font-size:20px">Will return the Response to the AppKernel which will </span><span style="font-size:20px">return it to the Front Controller</span></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="a920984fb842b9129a7447986bc301a3" style="min-width: 30px; min-height: 30px; width: 819px; height: 198px; left: 67px; top: 502px;"><div class="sl-block-content" style="z-index: 15; font-size: 81%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    private function filterResponse(Response $response, Request $request, $type)
+    {
+        $event = new FilterResponseEvent($this, $request, $type, $response);
+
+        $this-&gt;dispatcher-&gt;dispatch(KernelEvents::RESPONSE, $event);
+
+        $this-&gt;finishRequest($request, $type);
+
+        return $event-&gt;getResponse();
+    }</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 24px; height: 18.5px; left: 634px; top: 596px;" data-block-id="685ea5c75222d3606e3a5baa2c547c69"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(241, 194, 50)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(241, 194, 50)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 146px; left: 654px; top: 582px;" data-block-id="83a3f2411717c944cb364d3741484a8c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(241, 194, 50);">
+<p><strong><span style="font-size:16px">kernel.reponse</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 24px; height: 18.5px; left: 450px; top: 627px;" data-block-id="f65176b8a94771c1ea9452d327a55597"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(241, 194, 50)" data-shape-stretch="false" style="z-index: 19;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(241, 194, 50)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 195px; left: 463px; top: 613px;" data-block-id="941820a6bee12c2a0fccb2ddd3849181"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; color: rgb(241, 194, 50);">
+<p><strong><span style="font-size:16px">kernel.finish_request</span></strong></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="3e45e56a93cb7e93a5c573e386e50dbd"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Symfony HttpKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="2fdbcea39744949736e7165f69016afc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="b425976545bca187adc0a4bd0dd02424"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 79px; top: 239px;" data-block-id="0f04bded49da6d8ead7d40e7768b461c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3 style="text-align:left">Who uses it ?</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;" data-block-id="5050129282d8668a53c817157b45f7f4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<ul>
+	<li style="text-align:left">Drupal 8</li>
+	<li style="text-align:left">phpBB 3.1</li>
+	<li style="text-align:left">eZ Publish</li>
+	<li style="text-align:left">Silex</li>
+	<li style="text-align:left">Shopware</li>
+	<li style="text-align:left">...</li>
+</ul>
+</div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="595e43d90ffe4cb52a2cca8fdd46bf4b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Front Controller</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="81b2348dd5c456f0be27da4a43cf7b51"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="5a99eb9c743f48268c46e38318d7bea7"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="code" data-block-id="c5f21c6537d1f945b776892bbb6038e5" style="min-width: 30px; min-height: 30px; width: 661px; height: 220px; left: 112px; top: 340px;"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+$kernel = new AppKernel('prod', false);
+$kernel-&gt;loadClassCache();
+
+$request = Request::createFromGlobals();
+$response = $kernel-&gt;handle($request);
+$response-&gt;send();
+$kernel-&gt;terminate($request, $response);</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="4f7ba85246dfc8406ad9f8ce8826ea99" style="min-width: 4px; min-height: 4px; width: 661px; height: 20px; left: 112px; top: 488px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(147, 196, 125)" data-shape-stretch="true" style="z-index: 16; opacity: 0.4;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 661 20"><rect width="661" height="20" class="shape-element" fill="rgb(147, 196, 125)"></rect></svg></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="f872ccf7b5467361b74a117c5f8da2d7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Response</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="a3dddeed138b076550ac3cd838718a35"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="f10f5c09e28d8c6d9fbf1226b74d8c7e"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 737px; left: 112px; top: 245px;" data-block-id="889355b542017e8d092b0fa6bf842b68"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<h3>send()</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="5cc6d489e635ef844bcdb8c252d20bd9" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>Will add headers()</p>
+
+<p>Will set cookies()</p>
+
+<p>Will simply echo your Response content :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="45d3aa504978127becf7f1e9d7e89ea0" style="min-width: 30px; min-height: 30px; width: 693px; height: 206px; left: 143px; top: 483px;"><div class="sl-block-content" style="z-index: 16; font-size: 75%;"><pre><code>&lt;?php
+
+    /**
+     * Sends content for the current web response.
+     *
+     * @return Response
+     */
+    public function sendContent()
+    {
+        echo $this-&gt;content;
+
+        return $this;
+    }</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="c7bce95f6698e3ec0a2e63b72426e973"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">AppKernel</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="389e8c67268e2ec8820325ed553dfcd6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="e2140d6e13619ee574693f3bca3870bb"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 737px; left: 112px; top: 245px;" data-block-id="185b003a5e42b84107cb7ebe69df58ce"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h3>terminate()</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 331px;" data-block-id="dff8efa11c21ff3874aa310253dfea58"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>Will call terminate() from the HttpKernel</p>
+
+<p> </p>
+
+<p>Will throw the last Event of our journey !</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 24px; height: 18.5px; left: 741px; top: 591px;" data-block-id="a59ead454117cfe7684b2b2585d420ff"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(241, 194, 50)" data-shape-stretch="false" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(241, 194, 50)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 146px; left: 765px; top: 576px;" data-block-id="c83beab7512604b1e4e0c1ba392fce4b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; color: rgb(241, 194, 50);">
+<p><strong><span style="font-size:16px">kernel.terminate</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="a97d3a1c2ba0d765cd55b5025bd0bce7" style="min-width: 30px; min-height: 30px; width: 927px; height: 120px; left: 20px; top: 500px;"><div class="sl-block-content" style="z-index: 15; font-size: 80%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    public function terminate(Request $request, Response $response)
+    {
+        $this-&gt;dispatcher-&gt;dispatch(KernelEvents::TERMINATE, new PostResponseEvent($this, $request, $response));
+    }</code></pre></div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="955ea225e56338cb97de9e0fba312ea4"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Errors ? Exceptions ?</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="e71ea15c54ea4535c1af3000ce97ca73"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="a18b1854c0fd085ec9609f3b219a73c9"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 536.888888888889px; height: 302px; left: 212px; top: 296px;" data-block-id="df979f7659a88e661ac1149f3008d778"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 2px; border-radius: 10px;"><img data-natural-width="400" data-natural-height="225" data-src="symfony2/1302311-gF5CM.gif"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="f334f4e6f3942732cd52e43826be14a1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h1 style="text-align:center">Errors ? Exceptions ?</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="fb8c538f829b13779e7612a4a6b5487e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="782bb2a29ba5d66f544ae3b9d2cde2bf"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 241px;" data-block-id="8cee6f350fc93b24b367d4dd84c73320"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>What if any part of my script triggers an exception ?</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="fb15375f46e2493bf4046934d11c9c70" style="min-width: 30px; min-height: 30px; width: 927px; height: 315px; left: 20px; top: 362px;"><div class="sl-block-content" style="z-index: 14; font-size: 88%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+    public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
+    {
+        try {
+            return $this-&gt;handleRaw($request, $type);
+        } catch (\Exception $e) {
+            if (false === $catch) {
+                $this-&gt;finishRequest($request, $type);
+
+                throw $e;
+            }
+
+            return $this-&gt;handleException($e, $request, $type);
+        }
+    }</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 24px; height: 18.5px; left: 581px; top: 604px;" data-block-id="0076d7e0556fd7746c3a0d3ccdfb6731"><div class="sl-block-content" data-shape-type="symbol-star" data-shape-fill-color="rgb(241, 194, 50)" data-shape-stretch="false" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="rgb(241, 194, 50)"><path d="M22.137 19.625l9.863-7.625h-12l-4-12-4 12h-12l9.875 7.594-3.875 12.406 10.016-7.68 9.992 7.68z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 146px; left: 605px; top: 589px;" data-block-id="6dc72560a9e76c151022f8b62941cc4b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(241, 194, 50);">
+<p><strong><span style="font-size:16px">kernel.exception</span></strong></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="c2a61670d4215c68e4679dac775859ea"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Errors ? Exceptions ?</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="38e0f55333e957109887d72ac8ddc5ce"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="84d2d1c8d028ef163244e976e524e11b"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="5d3fb20697ad28a641197062ea29cca6" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 80px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>Every \Exception thrown will be converted to a FlattenException by the ExceptionListener and passed to the designated Controller to handle them and return a Response</p>
+</div></div></section></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 105px; height: auto;" data-block-id="0adc31354cb48773d5fe5a7bd5b0d9be"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center">Sub Requests</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="e938ebaab7f899e3dade90eeec9022fa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="533810cc81f8b998199a8b14af78ef6b"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 202px;" data-block-id="ff5767552f17f09274cbbf75e750419c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui">
+<p><span style="font-size:20px">Symfony allows you to launch sub Requests to render small parts of your website for example.</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 502.881355932203px; height: 301px; left: 228px; top: 288px;" data-block-id="3a7937d57e03ba16fc49070606d28eb8"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px;"><img style="" data-natural-width="690" data-natural-height="413" data-src="symfony2/1299676-sub-request.png"></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="7e9aa74ddc3b166ab99532ba7cf23ad5" style="min-width: 30px; min-height: 30px; width: 639px; height: 82px; left: 160px; top: 603px;"><div class="sl-block-content" style="z-index: 16; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+$kernel-&gt;handle($request, HttpKernelInterface::SUB_REQUEST);</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 806px; left: 74px; top: 308px; height: auto;" data-block-id="426899186be5b95282adc041d0295715"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 11;">
+<h1 style="text-align:center"><a href="http://127.0.0.1:8000/blog/" target="_blank">Example</a></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="eb29c263a940c027e0dbb9e0a232b60c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="2e390632b699172d00492caf73e82831"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+</section><section>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="9faccc1629122842388fc6a5efc15326"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="73b2c64f492d73dec5849756d781496a"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" data-block-id="218ed8e4f329543437af918d5087b58f" style="height: auto; min-width: 30px; min-height: 30px; width: 627px; left: 167px; top: 95px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<h3>Other Components seen in this presentation :</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="482d2aa655e4520e3035dcc64445b34d" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p style="text-align: left;"><strong>EventDispatcher</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 321px;" data-block-id="8f680e4e583f061cbbe9d6257eb3f65c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p style="text-align:left"><strong>DependencyInjection</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 433px;" data-block-id="8b6ade99f5cb8039fa7b8177972327ca"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p style="text-align:left"><strong>Finder</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 533px;" data-block-id="d53cabaa8fb9c54f47238a1c0ae6bf2d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p style="text-align:left"><strong>OptionsResolver</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 611px;" data-block-id="b16f8d420d43de42922c16173a4f3a5d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p style="text-align:left"><strong>...</strong></p>
+</div></div></section><section>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="3aeedad69655dd5c8d6bccddc58e20ed"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="36505195bdc9cf16d434f9288a109ecc"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 937px; left: 13px; top: 95px;" data-block-id="a3719e058302d57dfb323864592dd5a9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h1>What about HttpCache ?</h1>
+</div></div>
+
+
+
+
+<div class="sl-block" data-block-type="text" data-block-id="6d9634de6588a45743f022aafe1c888c" style="height: auto; min-width: 30px; min-height: 30px; width: 848px; left: 57px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:20px">Symfony provides an HttpCache reverse proxy (which implements HttpKernelInterface like HttpKernel).</span></p>
+
+<p><span style="font-size:20px">It takes an AppKernel as argument.</span></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="f608115064342e013bf979111ed2aff6" style="min-width: 30px; min-height: 30px; width: 730px; height: 280px; left: 115px; top: 391px;"><div class="sl-block-content" style="z-index: 15; font-size: 93%; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+// ...
+
+require_once __DIR__.'/../app/AppCache.php';
+$kernel = new AppKernel('prod', false);
+$kernel-&gt;loadClassCache();
+
+$kernel = new AppCache($kernel);
+Request::enableHttpMethodParameterOverride();
+
+$request = Request::createFromGlobals();
+$response = $kernel-&gt;handle($request);
+$response-&gt;send();
+$kernel-&gt;terminate($request, $response);</code></pre></div></div></section><section>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 359px; left: 35px; top: 13px;" data-block-id="d2e7e6acfa37476a22fdbc0b36ac4ce2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p><strong><span style="font-size:16px">A journey from Request to Response</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 44px; height: 52.98756660746px; left: 13px; top: 13px;" data-block-id="1ff2b312645dd49fbe3033182b15f23e"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="563" data-natural-height="678" data-src="symfony2/1298932-pasted-from-clipboard.png"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 937px; left: 13px; top: 95px;" data-block-id="a997d2ee26c93e412e65f2370a2a2ed4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<h1>What about Command ?</h1>
+</div></div>
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 848px; left: 57px; top: 210px;" data-block-id="822dbbb73d4bf5d64ec405b0e8d78e79"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><span style="font-size:20px; line-height:26px">When you trigger php app/console ... you actually launch an Application.</span></p>
+
+<p><span style="font-size:20px">The Symfony applications also wraps the AppKernel to get access to the bundles, Container, ...</span></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="8260a56d3f8c405fb07c00bf74983902" style="min-width: 30px; min-height: 30px; width: 606px; height: 236px; left: 178px; top: 379px;"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 2px;"><pre><code>&lt;?php
+
+// ...
+
+$input = new ArgvInput();
+
+$kernel = new AppKernel($env, $debug);
+
+$application = new Application($kernel);
+$application-&gt;run($input);
+</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 270px; height: auto;" data-block-id="f1f6698140f820adece9cd82d446fb3c"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text">
+<h1>Thank you !</h1>
+</div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":395305,"slug":"symfony2","title":"Symfony2","description":"","visibility":"all","published_at":"2015-04-22T13:51:36.704Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/secure/b10763/decks.jpg","view_count":8,"user":{"id":180211,"username":"babacooll","name":"Babacooll","description":null,"thumbnail_url":"https://lh5.googleusercontent.com/-3YpaWCGw0oc/AAAAAAAAAAI/AAAAAAAAADo/2lysHoYaOR4/photo.jpg","pro":true,"enterprise":false,"enterprise_manager":false,"settings":{"id":141607,"present_controls":true,"present_upsizing":true},"registered":true},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"silver-green","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"rtl":false,"version":2,"notes":{}}};
+			SLConfig.current_user = {
+				name: "Babacooll",
+				username: "babacooll",
+				pro: true
+			};
+		</script>
+
+		<script src="lib/head.min.js"></script>
+		<script src="lib/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				mouseWheel: false,
+
+				autoSlide: SLConfig.deck.auto_slide_interval || 0,
+				autoSlideStoppable: true,
+
+				rolling_links: SLConfig.deck.rolling_links || true,
+				center: SLConfig.deck.center || false,
+				loop: SLConfig.deck.should_loop || false,
+				rtl: SLConfig.deck.rtl || false,
+
+				transition: SLConfig.deck.transition,
+				backgroundTransition: SLConfig.deck.background_transition,
+
+				dependencies: [
+					{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			// Make Slides speaker notes available in the reveal.js speaker view
+			if( SLConfig.deck.notes ) {
+				[].forEach.call( document.querySelectorAll( '.reveal .slides section' ), function( slide ) {
+
+					var value = SLConfig.deck.notes[ slide.getAttribute( 'data-id' ) ];
+					if( value && typeof value === 'string' ) {
+						slide.setAttribute( 'data-notes', value );
+					}
+
+				} );
+			}
+		</script>
+
+		
+
+	</body>
+</html>
